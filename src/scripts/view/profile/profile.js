@@ -34,11 +34,13 @@ export default {
 
     const pushBtn = document.querySelector('#pushToggleBtn');
     const token = localStorage.getItem('token');
-    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-      pushBtn.disabled = true;
-      pushBtn.textContent = 'Push not supported';
-      return;
-    }
+   // index.js atau main entry
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`)
+      .then(reg => console.log('Service Worker registered:', reg))
+      .catch(err => console.error('SW registration failed:', err));
+  }
+
 
     // check subscription
     const reg = await navigator.serviceWorker.ready;
