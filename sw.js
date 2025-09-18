@@ -1,11 +1,15 @@
+const BASE_URL = new URL('.', self.registration.scope).pathname;
+
 const CACHE_NAME = 'dicoding-story-v1';
 const APP_SHELL = [
-  '/', // index.html
-  '/index.html',
-  '/styles/styles.css',
-  '/scripts/index.js'
-  // tambahkan file penting lain jika perlu
+  `${BASE_URL}`,            // index.html
+  `${BASE_URL}index.html`,
+  `${BASE_URL}index-CWa2S7fI.css`,
+  `${BASE_URL}index-CQ8dLYp8.js`,
+  `${BASE_URL}favicon.png`,
+  // tambahkan file lain dari dist
 ];
+
 
 self.addEventListener('install', (ev) => {
   ev.waitUntil(
