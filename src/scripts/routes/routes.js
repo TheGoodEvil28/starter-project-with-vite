@@ -6,6 +6,8 @@ import loginPage from '../view/login/login-page.js';
 // import loginPage from '../pages/register/register-page.js';
 import registerPage from '../view/register/register-page.js';
 import profilePage from '../view/profile/profile.js';
+import Bookmark from '../view/bookmark/bookmark.js';
+
 
 
 const routes = {
@@ -16,7 +18,8 @@ const routes = {
   '/about': aboutPage,
   '/login': loginPage,
   '/register': registerPage,
-  '/profile': profilePage
+  '/profile': profilePage,
+   '/bookmark': Bookmark
 
 
 };

@@ -15,14 +15,14 @@ function openDB() {
   });
 }
 
-export async function saveStories(stories = []) {
+export async function saveStory(story) {
   const db = await openDB();
-  const tx = db.transaction(STORE, 'readwrite');
-  const store = tx.objectStore(STORE);
-  // clear then put
-  store.clear();
-  stories.forEach(s => store.put(s));
-  return tx.complete;
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).put(story);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+  });
 }
 
 export async function getStoriesFromDB() {
@@ -38,7 +38,10 @@ export async function getStoriesFromDB() {
 
 export async function deleteStoryFromDB(id) {
   const db = await openDB();
-  const tx = db.transaction(STORE, 'readwrite');
-  tx.objectStore(STORE).delete(id);
-  return tx.complete;
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).delete(id);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+  });
 }

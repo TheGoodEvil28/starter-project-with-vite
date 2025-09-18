@@ -1,21 +1,25 @@
 import Api from '../model/api.js';
-import { saveStories, getStoriesFromDB } from '../utils/indexeddb.js';
+import { getStoriesFromDB } from '../utils/indexeddb.js';
 
 class StoryPresenter {
-  constructor(view) { this.view = view; }
+  constructor(view) {
+    this.view = view;
+    this.stories = [];
+  }
 
   async loadStories() {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Silakan login dulu');
+
       const stories = await Api.getStories(token);
-      // simpan ke indexedDB untuk offline
-      saveStories(stories).catch(()=>{});
-      this.view.showStories(stories);
+      this.stories = stories;            // hanya simpan di memori
+      this.view.showStories(stories);    // render ke UI
     } catch (err) {
-      // fallback ke indexedDB
+      // fallback offline
       const offline = await getStoriesFromDB();
-      if (offline && offline.length) {
+      if (offline?.length) {
+        this.stories = offline;
         this.view.showStories(offline);
       } else {
         this.view.showError(err.message);
