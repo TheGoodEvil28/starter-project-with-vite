@@ -1,5 +1,6 @@
 // Tambahkan ini di paling atas file
-import StoryPresenter from '../../presenters/story-presenter.js'; // sesuaikan path
+// import StoryPresenter from '../../presenters/story-presenter.js'; // sesuaikan path
+import StoryPresenter from '@/scripts/presenters/story-presenter.js';
 
 export default {
   async render() {

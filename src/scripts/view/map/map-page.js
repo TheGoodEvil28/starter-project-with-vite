@@ -1,6 +1,8 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import MapPresenter from '../../presenters/map-presenter.js';
+// import MapPresenter from '../../presenters/map-presenter.js';
+import MapPresenter from '@/scripts/presenters/map-presenter.js';
+
 
 // Override default marker icon
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';

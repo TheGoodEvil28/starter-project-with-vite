@@ -1,4 +1,5 @@
-import LoginPresenter from '../../presenters/login-presenter.js';
+// import LoginPresenter from '../../presenters/login-presenter.js';
+import LoginPresenter from '@/scripts/presenters/login-presenter.js';
 
 export default {
   async render() {

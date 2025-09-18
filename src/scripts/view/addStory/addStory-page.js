@@ -1,6 +1,8 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import StoryPresenter from '../../presenters/story-presenter.js';
+// import StoryPresenter from '../../presenters/story-presenter.js';
+import StoryPresenter from '@/scripts/presenters/story-presenter.js';
+
 
 export default {
   async render() {

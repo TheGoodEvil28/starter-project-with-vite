@@ -1,4 +1,6 @@
-import RegisterPresenter from '../../presenters/register-presenter.js';
+// import RegisterPresenter from '../../presenters/register-presenter.js';
+import RegisterPresenter from '@/scripts/presenters/register-presenter.js';
+
 
 export default {
   async render() {
