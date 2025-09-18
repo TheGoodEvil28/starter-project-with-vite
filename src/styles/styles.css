@@ -1,0 +1,256 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+/* Container */
+.container {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Header */
+header {
+  background-color: lightskyblue;
+  color: #fff;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #222;
+}
+
+/* Navigation Drawer */
+.navigation-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background: #fff;
+  padding: 1rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.navigation-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #222;
+}
+
+/* Nav list */
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nav-list li a {
+  display: block;
+  padding: 0.5rem;
+  color: #222;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-list li a:hover,
+.nav-list li a:focus {
+  background: rgba(135, 206, 250, 0.3);
+  outline: none;
+}
+
+/* Main */
+.main-content {
+  padding: 1.5rem 0;
+  min-height: calc(100vh - 90px);
+}
+
+/* Responsive untuk layar besar */
+@media (min-width: 1000px) {
+  .navigation-drawer {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    padding: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .drawer-button {
+    display: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+input, textarea, button {
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background: lightskyblue;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover,
+button:focus {
+  background: deepskyblue;
+  outline: none;
+}
+
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.card img {
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+.card h2,
+.card h3 {
+  text-align: center;
+}
+
+.card p {
+  text-align: justify; /* atau left */
+}
+
+
+.card {
+  padding: 1rem 1.25rem;
+  text-align: center; /* semua teks di dalam card jadi center */
+}
+
+
+.card h3, 
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+
+.map-container {
+  width: 100%;
+  height: 80vh; /* hampir full screen, masih sisain header */
+  margin: 0;
+  padding: 0;
+}
+
+.map-container.fullscreen {
+  height: 100vh; /* bener2 full screen */
+}
+
+.container {
+  text-align: center;
+}
+
+/* Animasi masuk halaman */
+::view-transition-new(*) {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Animasi keluar halaman */
+::view-transition-old(*) {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* view transition helpers (naming contains `view-transition-`) */
+.view-transition-enter {
+  animation: view-transition-fade-in 300ms ease forwards;
+}
+.view-transition-exit {
+  animation: view-transition-fade-out 250ms ease forwards;
+}
+@keyframes view-transition-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes view-transition-fade-out { from { opacity: 1; } to { opacity: 0; } }
+

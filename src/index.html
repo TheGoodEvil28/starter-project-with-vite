@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <title>App</title>
+
+  <script type="module" src="/scripts/index.js"></script>
+
+  <style>
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #007bff;
+      color: white;
+      padding: 8px 16px;
+      z-index: 100;
+      transition: top 0.3s;
+      text-decoration: none;
+    }
+
+    .skip-link:focus, .skip-link:focus-visible {
+      top: 0; /* munculkan saat focus */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#" class="skip-link" id="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="main-header container">
+      <a class="brand-name" href="#/">App</a>
+
+      <nav id="navigation-drawer" class="navigation-drawer">
+        <ul id="nav-list" class="nav-list">
+          <li><a href="#/">Beranda</a></li>
+          <li><a href="#/map">Peta</a></li>
+          <li><a href="#/add">Tambah Story</a></li>
+          <li><a href="#/profile">Profil</a></li>
+          <li><a href="#/about">About</a></li>
+          <li id="login-link"><a href="#/login">Login</a></li>
+          <li id="register-link"><a href="#/register">Register</a></li>
+          <li id="logout-link" style="display:none;"><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+      
+      <button id="drawer-button" class="drawer-button" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="main-content">
+    <h1>Daftar Story</h1>
+    <!-- Konten utama akan muncul di sini -->
+     <button id="installBtn" style="display:none">
+  Install App
+</button>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer-content" class="container" role="contentinfo">
+    <p>&copy; 2025 Andika Satya Nugra. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Skip to main content fokus otomatis
+    document.getElementById('skip-link').addEventListener('click', e => {
+      e.preventDefault();
+      const main = document.getElementById('main-content');
+      main.setAttribute('tabindex', '-1'); // agar bisa di-focus
+      main.focus();
+    });
+  </script>
+</body>
+</html>
